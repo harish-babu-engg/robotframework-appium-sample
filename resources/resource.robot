@@ -39,7 +39,7 @@ Open Android Test App
 Open Android Test App on Browserstack
   [Arguments]    ${appActivity}=${EMPTY}
   &{vars}=  Create Dictionary   appiumVersion=${APPIUM_VERSION}
-  open application  http://harishbabu_VuCbFD:FRgM7DmjtYCN9QwxkFRo@hub-cloud.browserstack.com/wd/hub
+  open application  http://${ANDROID_BS_USERNAME}:${ANDROID_BS_ACCESS_KEY}@hub-cloud.browserstack.com/wd/hub
   ...  automationName=${ANDROID_BS_AUTOMATION_NAME}
   ...  app=${ANDROID_BS_APP}  platformName=${ANDROID_BS_PLATFORM_NAME}
   ...  platformVersion=${ANDROID_BS_PLATFORM_VERSION}
