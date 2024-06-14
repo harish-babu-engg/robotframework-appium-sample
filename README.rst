@@ -1,6 +1,6 @@
-============================================================
+############################################################
 Appium Testing Sample with Robot Framework and AppiumLibrary
-============================================================
+############################################################
 
 AppiumLibrary_ is an appium testing library for `Robot Framework`_.
 In this sample usage of the library, you can find ios and android test suites
@@ -11,7 +11,7 @@ that are ready to execute. Also you can find how the reports look like.
    :local:
 
 Downloading demo package
-------------------------
+============================
 
 To get the demo, you can either `download`_ the repository from GitHub or checkout
 the `source code`_ directly.
@@ -19,7 +19,7 @@ the `source code`_ directly.
 Reports are available also online in `generated results`_.
 
 Overview
---------
+============================
 In this sample framework, you will find test cases for iOS and Android.
 Test cases are written for sample applications under `demoapp`_ folder.
 
@@ -29,7 +29,7 @@ Test cases are written for sample applications under `demoapp`_ folder.
 - Test suite for iOS and Android  Selectors
 
 Generated results
------------------
+============================
 After `running tests`_ you will get report and log in HTML format. Example
 files are also visible online in case you are not interested in running
 the demo yourself:
@@ -37,8 +37,10 @@ the demo yourself:
 - `report.html`_
 - `log.html`_
 
+
 Running Sample
 ==============
+
 Preconditions
 -------------
 
@@ -69,9 +71,44 @@ You can also run an iOS or Android case file/test::
     robot tests/android_basic_interactions.test.robot
     robot --test "Should find elements by ID" tests
 
+Running on Browserstack
+=======================
 
-TODO
-----
+Overview
+--------
+Browserstack is a cloud based shared device provider.  We can use Robot framework with Appium Library to run automation tests on the service.
+
+Since it uses Appium with specific drivers to test, we can use the same method that we use for local testing, even with Browserstack.  There are a few Browserstack specific capabilities that needs to be modified to run the tests. 
+
+Setup
+-----
+
+Setting Up App URL
+++++++++++++++++++
+A key change with Browserstack is the ``app`` parameter in the DesiredCapabilites.  Instead of a file path to your local application bundle, it should be a ``bs://`` scheme provided by Browserstack.  Upload your application to Browserstack and then copy the URL provided.  Use that in your resource script in Robot.  See ``Open Android Test App on Browserstack`` keyword in  `resource configuration <resources/resource.robot>`_ for an example of how to do this.
+
+Setting up Accesss Keys
++++++++++++++++++++++++
+
+Find the Browserstack username & access keys.  They can be found on the browserstack dashboard once you log in. On your terminal where you run the tests, export them as environment variables.
+::
+
+    export BSTACK_ACCESS_KEY=<browserstack-access-key>
+    export BSTACK_USERNAME=<browserstack-username>
+
+Once it is exported, you can run the tests in the manner presented above.
+::
+
+    robot tests/android_browserstack.test.robot
+
+Using Appium v2.x
++++++++++++++++++
+
+The default version of Appium that Browserstack uses is the latest version on the Appium 1.x tree (1.17 as of this writing).  2.4.1 is the latest version of Appium that is supported by Browserstack.  If you need to use this version, Browserstack expects certain options to be set in the DesiredCapabilities.  Refer to `this document to learn more <https://www.browserstack.com/docs/app-automate/appium/references/appium-2-migration-doc>`_.  The resource configuration on this project uses Appium version 2.4.1.
+
+
+To-Do
+=====
 There are much more to improve, here is the list of things to come
 
 - Circle.ci build pipeline
