@@ -101,6 +101,10 @@ Once it is exported, you can run the tests in the manner presented above.
 
     robot tests/android_browserstack.test.robot
 
+Using Appium v2.x
++++++++++++++++++
+
+The default version of Appium that Browserstack uses is the latest version on the Appium 1.x tree (1.17 as of this writing).  2.4.1 is the latest version of Appium that is supported by Browserstack.  If you need to use this version, Browserstack expects certain options to be set in the DesiredCapabilities.  Refer to `this document to learn more <https://www.browserstack.com/docs/app-automate/appium/references/appium-2-migration-doc>`_.  The resource configuration on this project uses Appium version 2.4.1.
 
 
 To-Do
