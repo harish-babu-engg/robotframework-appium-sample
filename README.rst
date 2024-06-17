@@ -71,6 +71,17 @@ You can also run an iOS or Android case file/test::
     robot tests/android_basic_interactions.test.robot
     robot --test "Should find elements by ID" tests
 
+Test Suites - Setup & Teardown
+==============================
+
+Test suite can have setup and tear downs.  The ``tests/android`` directory shows hierarchical test suites that have multiple directories & files.  You could run a test using the command from inside the ``tests/android`` directory.
+::
+  
+    robot --suite "Android Suite" .
+
+This will ensure that that only test suite "Android Suite" runs.  Any Suite Setup & Teardowns from the current folder down will be run.  Setup & teardown of test suites at each level in the hierarchy will be run.
+
+
 Running on Browserstack
 =======================
 
